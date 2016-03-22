@@ -13,6 +13,7 @@ preprocess_data <- function(data) {
 	# delete "r" and "," in the data
 	m <- gsub("r", "", m)
 	m <- gsub(",", "", m)
+	m <- gsub("占", "佔", m)
 	# apply(m, 1, function(x) cat(x, "\n"))
 	# cat("rrrr\n")
 
@@ -122,6 +123,8 @@ for (i in 103:104) {
 
 ##### 欄位數: 100-8之前13欄，之後14欄 ######
 
+# data_list[[96]][[12]][43, 11] <- sum(data_list[[96]][[12]][1:42, 11])
+# data_list[[96]][[12]][43, 12] <- sum(data_list[[96]][[12]][1:42, 12])
 
 # saveRDS(data_list, "data_list.rds")
 
