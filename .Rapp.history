@@ -1,0 +1,70 @@
+install.packages("SnowballC")
+library(SnowballC)
+install.packages(tm)
+install.packages("tm")
+c <- matrix(c(1:25), nrow=3)
+c <- matrix(c(1:24), nrow=3)
+c
+v <- c[1:-1]
+v <- as.vector(c[1:-1])
+v <- as.vector(c[1,-1])
+v
+m <- c[-1,-1]
+m
+cosSim <- (m%*%v)/ sqrt(sum(v*v)*rowSums(m*m))
+cosSim
+a <- (
+)
+c <- c(1:7)
+c
+paste(c, spe=" ")
+licence()
+sessionInfo()
+Sys.getlocale()
+setwd("/Users/weichun/Desktop/creditcard")
+data <- read.table("data.txt", header=T)
+data
+data[1,]
+data[,1]
+plot(data)
+paris(data)
+pari(data)
+pair(data)
+pairs(data)
+data <- cbind(rownames(data), data)
+data
+data <- data[,-1]
+data
+data <- cbind(year = rownames(data), data)
+data
+plot(data)
+plot(data)
+data_list <- readRDS("data_list.rds")
+data_list
+install.packages("shiny")
+library("shiny")
+runExample(“01_hello")
+plot(data_list)
+plot(data)
+for (i in 94:99) {#
+	for (j in 1:12) {#
+		cat(tail(data_list[[i]][[j]], 1), "\n")#
+	}#
+}
+tail(data_list[[i]][[j]], 1)
+for (i in 94:95) {#
+	for (j in 1:12) {#
+		temp <- append(i, j, tail(data_list[[i]][[j]], 1))#
+		cat(temp , "\n")#
+	}#
+}
+i = 94
+j =1
+append(i, j, tail(data_list[[i]][[j]], 1))
+data_list[[96]][[16]]
+data_list[[96]][[6]]
+nrow(data_list[[96]][[6]])
+sum(data_list[[96]][[6]][1:43, 5])
+data_list[[96]][[6]][, 5]
+data_list[[96]][[6]][, 6]
+sum(data_list[[96]][[6]][1:43, 6])

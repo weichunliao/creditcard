@@ -127,6 +127,8 @@ for (i in 103:104) {
 # data_list[[96]][[12]][43, 12] <- sum(data_list[[96]][[12]][1:42, 12])
 
 # saveRDS(data_list, "data_list.rds")
+# sum(data_list[[96]][[6]][1:43, 6])
+# data_list[[96]][[6]][44, 6]
 
 
 

@@ -1,6 +1,7 @@
 # install.packages("readxl")
 library("readxl")
 
+# read data
 data <- read_excel("/Users/weichun/Desktop/creditcard/data/105/10501+信用卡重要資訊揭露.xlsx")
 
 m <- as.matrix(data)
@@ -33,13 +34,11 @@ for (i in 94:104) {
 
 #####
 
-# data2 <- read_excel("/Users/weichun/Desktop/creditcard/data/103/1.xlsx")
-# sum(as.numeric(data[8:43,2]))
-# # paste(data[4, 10], data[5, 10], data[6, 10], data[7, 10], sep="")
-# paste(data[4:7, 10], collapse="")
+# aggregate data
 
-
-# m <- as.matrix(data[8:43,2:12])
-# m2 <- t(apply(m, 1,as.numeric))
-# bank_list <- data[8:43,1]
-
+for (i in 94:95) {
+	for (j in 1:12) {
+		temp <- append(i, j, tail(data_list[[i]][[j]], 1))
+		cat(temp , "\n")
+	}
+}
