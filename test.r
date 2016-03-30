@@ -1,6 +1,15 @@
 # install.packages("readxl")
 library("readxl")
 
+# ###############
+setwd("/Users/weichun/Desktop/creditcard")
+data_list <- readRDS("data_list.rds")
+datalist_by_year <- readRDS("datalist_by_year.rds")
+aggr_by_month <- readRDS("aggr_by_month.rds")
+sum_by_year <- readRDS("sum_by_year.rds")
+# ###############
+
+# sys.setlocale(category = "LC_ALL", locale = "zh_TW.UTF-8")
 # read data
 data <- read_excel("/Users/weichun/Desktop/creditcard/data/105/10501+信用卡重要資訊揭露.xlsx")
 
@@ -36,9 +45,31 @@ for (i in 94:104) {
 
 # aggregate data
 
-for (i in 94:95) {
-	for (j in 1:12) {
-		temp <- append(i, j, tail(data_list[[i]][[j]], 1))
-		cat(temp , "\n")
+data_by_year <- vector("list", 11)
+# names(data_by_year) <- c(94:104)
+for (i in 94:104) {
+
+	if (i > 99) {
+		for (j in 1:12) {
+			data_list[[i]][[j]] <- data_list[[i]][[j]][,colnames(data_list[[i]][[j]])!= "未到期分期付款餘額"]
+		}
 	}
+
+	temp <- t(sapply(data_list[[i]], function(x) tail(x, 1), simplify=TRUE))
+	# cat(temp, "\n")
+	colnames(temp) <- colnames(data_list[[94]][[1]])
+
+	# cat(ncol(temp),"\n")
+
+	year <- rep(i, 12)
+	month <- c(1:12)
+	temp <- cbind(year, month, temp)
+	data_by_year[[(i-93)]] <- temp
 }
+do.call(rbind, data_by_year)
+
+
+
+
+
+

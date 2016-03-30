@@ -21,50 +21,139 @@ paste(c, spe=" ")
 licence()
 sessionInfo()
 Sys.getlocale()
+mu <- c(1, 3)
+sigma <- matrix(c(2, -8*2^(1/2), -8*2^(1/2), 1))
+sigma
+sigma <- matrix(c(2, -8*2^(1/2), -8*2^(1/2), 1), nrow = 2)
+sigma
+install.packages("mixtools")
+library("mixtools")
+ellipse(mu, sigma, alpha = .05, npoints = 250, newplot = FALSE,#
+        draw = TRUE, ...)
+ellipse(mu, sigma))
+ellipse(mu, sigma)
+ellipse(mu, sigma, 0.5)
+mu
+as.vector(mu)
+library(MASS)
+bivn <- mvrnorm(1000, mu = c(1, 3), Sigma = matrix(c(2, -8*2^(1/2), -8*2^(1/2), 1), 2))
+sigma <- matrix(c(2, -.8*2^(1/2), -.8*2^(1/2), 1), nrow = 2)
+ellipse(mu, sigma, 0.5)
+ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = FALSE,#
+        draw = TRUE, plot)
+ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE,#
+        draw = TRUE, plot)
+mu
+sigma
+ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE,#
+        draw = TRUE, lines)
+ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE,#
+        draw = TRUE, plot)
+ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE)
+x <- c(1:5); y <- x
+plot(x, y, main="type=o")
+lines(x, y, type="o")
+lines(x, y, type=o)
+lines(x, y, type="o")
+par(pch=22, col="red") # plotting symbol and color #
+par(mfrow=c(2,4)) # all plots on one page #
+opts = c("p","l","o","b","c","s","S","h") #
+for(i in 1:length(opts)){ #
+  heading = paste("type=",opts[i]) #
+  plot(x, y, type="n", main=heading) #
+  lines(x, y, type=opts[i]) #
+}
+x <- c(1:5); y <- x # create some data#
+par(pch=22, col="blue") # plotting symbol and color #
+par(mfrow=c(2,4)) # all plots on one page #
+opts = c("p","l","o","b","c","s","S","h") #
+for(i in 1:length(opts){ #
+  heading = paste("type=",opts[i]) #
+  plot(x, y, main=heading) #
+  lines(x, y, type=opts[i]) #
+}
+x <- c(1:5); y <- x # create some data#
+par(pch=22, col="blue") # plotting symbol and color #
+par(mfrow=c(2,4)) # all plots on one page #
+opts = c("p","l","o","b","c","s","S","h") #
+for(i in 1:length(opts)){ #
+  heading = paste("type=",opts[i]) #
+  plot(x, y, main=heading) #
+  lines(x, y, type=opts[i]) #
+}
+x <- c(1:5); y <- x # create some data#
+par(pch=22, col="blue") # plotting symbol and color #
+par(mfrow=c(2,4)) # all plots on one page #
+opts = c("p","l","o","b","c","s","S","h") #
+for(i in 1:length(opts)){ #
+  heading = paste("type=",opts[i]) #
+  plot(x, y, main=heading) #
+}
+x <- c(1:5); y <- x # create some data#
+par(pch=22, col="blue") # plotting symbol and color #
+par(mfrow=c(2,4)) # all plots on one page #
+opts = c("p","l","o","b","c","s","S","h") #
+for(i in 1:length(opts)){ #
+  heading = paste("type=",opts[i]) #
+  lines(x, y, type=opts[i]) #
+}
+plot(-4:4, -4:4, type = "n")  # setting up coord. system#
+points(rnorm(200), rnorm(200), col = "red")#
+points(rnorm(100)/2, rnorm(100)/2, col = "blue", cex = 1.5)
+point(x,y, col="yellow")
+points(x,y, col="yellow")
+points(x,y, col="red")
+plot(-4:4, -4:4, type = "n")  # setting up coord. system
+points(x,y, col="red")
+points((x-3),(y-2), col="blue")
 setwd("/Users/weichun/Desktop/creditcard")
-data <- read.table("data.txt", header=T)
-data
-data[1,]
-data[,1]
-plot(data)
-paris(data)
-pari(data)
-pair(data)
-pairs(data)
-data <- cbind(rownames(data), data)
-data
-data <- data[,-1]
-data
-data <- cbind(year = rownames(data), data)
-data
-plot(data)
-plot(data)
-data_list <- readRDS("data_list.rds")
-data_list
-install.packages("shiny")
-library("shiny")
-runExample(“01_hello")
-plot(data_list)
-plot(data)
-for (i in 94:99) {#
-	for (j in 1:12) {#
-		cat(tail(data_list[[i]][[j]], 1), "\n")#
-	}#
-}
-tail(data_list[[i]][[j]], 1)
-for (i in 94:95) {#
-	for (j in 1:12) {#
-		temp <- append(i, j, tail(data_list[[i]][[j]], 1))#
-		cat(temp , "\n")#
-	}#
-}
-i = 94
-j =1
-append(i, j, tail(data_list[[i]][[j]], 1))
-data_list[[96]][[16]]
-data_list[[96]][[6]]
-nrow(data_list[[96]][[6]])
-sum(data_list[[96]][[6]][1:43, 5])
-data_list[[96]][[6]][, 5]
-data_list[[96]][[6]][, 6]
-sum(data_list[[96]][[6]][1:43, 6])
+data <- read.csv("tasr_2005p1.csv")
+head(data)
+unique(id)
+unique(data$author)
+summary(data)
+summary(data$author)
+attach(data)
+length(author)
+length(unique(author)))
+length(unique(author))
+dtime <- as.POSIXIlt(date)
+dtime <- as.POSIXIIt(date)
+dtime <- as.POSIXlt(date)
+head(data)
+data2 <- load("tasr_2005p1.rdata")
+head(data2)
+data2
+head("ymsg1")
+head(ymsg1)
+head(data)
+data <- ymsg1
+head(data)
+attach(data)
+head(data$id)
+head(data$author)
+summary(data$author)
+summary(data$author)
+unique(data$author)
+length(unique(data$author))
+aggregate(data, by=author, count)
+length(unique(author))
+aggregate(data, by=list(unique(author)), FUN= length)
+aggregate(data, by=list(author), FUN= length)
+head(aggregate(data, by=list(author), FUN= length))
+head(sort(aggregate(data, by=list(author), FUN= length)))
+head(sort(aggregate(data, by=list(author), FUN= length)))
+head(sort(aggregate(data, by=list(author), FUN= length)$content))
+sort(aggregate(data, by=list(author), FUN= length)$content)
+sort(aggregate(data, by=list(author), FUN= length)$content, decreasing = T)
+head(sort(aggregate(data, by=list(author), FUN= length)$content, decreasing = T))
+aggregate(data, by=list(author), FUN= length)$content, decreasing = T)[head(order(aggregate(data, by=list(author), FUN= length)$content, decreasing = T))]
+aggregate(data, by=list(author), FUN= length)$content, decreasing = T[head(order(aggregate(data, by=list(author), FUN= length)$content, decreasing = T))]
+head(order(aggregate(data, by=list(author), FUN= length)$content, decreasing = T))
+a <- head(order(aggregate(data, by=list(author), FUN= length)$content, decreasing = T))
+x <-aggregate(id~author,FUN=length)
+head(x)
+table(data)
+table(author)
+sort(table(author))[1:6]
+sort(table(author), decreasing=TRUE)[1:6]
