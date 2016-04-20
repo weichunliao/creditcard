@@ -14,6 +14,7 @@ preprocess_data <- function(data) {
 	m <- gsub("r", "", m)
 	m <- gsub(",", "", m)
 	m <- gsub("占", "佔", m)
+	# m <- gsub("*", "", m) #################################  100-9 銀行名稱有*
 	# apply(m, 1, function(x) cat(x, "\n"))
 	# cat("rrrr\n")
 
