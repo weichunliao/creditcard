@@ -10,6 +10,7 @@ aggr_by_month <- readRDS("aggr_by_month.rds")
 sum_by_year <- readRDS("sum_by_year.rds")
 # ###############
 
+# Sys.getlocale()
 # sys.setlocale(category = "LC_ALL", locale = "zh_TW.UTF-8")
 # read data
 data <- read_excel("/Users/weichun/Desktop/creditcard/data/105/10501+信用卡重要資訊揭露.xlsx")
@@ -119,8 +120,9 @@ chinatrust <- do.call(rbind, chinatrust)
 
 # ###
 # get the data for banks
-get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {
-	start_year <- start_year-1
+get_bank <- function(bank_name, year_count = 11, data_list = data_list_v2) {
+	data_list_v2 <- tail(data_list_v2, year_count)
+	start_year <- 104 - year_count
 	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )
 	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})
 	temp <- do.call(rbind, temp)
