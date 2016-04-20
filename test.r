@@ -87,6 +87,7 @@ for (i in 1:11) {
 # ######################################
 for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北富邦銀行"),"\n") }}
 identical(ttt, chinatrust)
+as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m")
 # ### 
 
 # 
@@ -117,12 +118,17 @@ chinatrust <- lapply(seq_along(chinatrust), function(i) {return (cbind(year=rep(
 chinatrust <- do.call(rbind, chinatrust)
 
 # ###
-# get the data for 
+# get the data for banks
 get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {
 	start_year <- start_year-1
 	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )
 	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})
 	temp <- do.call(rbind, temp)
+
+
+	temp <- as.data.frame(temp)
+	temp <- cbind( date = as.Date(paste(1, (temp[,1]+1911), temp[,2]), format="%d %Y %m"), temp)
+	# temp <- temp[,-c(2,3)]
 
 	return (temp)
 }

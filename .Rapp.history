@@ -1,125 +1,387 @@
-install.packages("SnowballC")
-library(SnowballC)
-install.packages(tm)
-install.packages("tm")
-c <- matrix(c(1:25), nrow=3)
-c <- matrix(c(1:24), nrow=3)
-c
-v <- c[1:-1]
-v <- as.vector(c[1:-1])
-v <- as.vector(c[1,-1])
-v
-m <- c[-1,-1]
-m
-cosSim <- (m%*%v)/ sqrt(sum(v*v)*rowSums(m*m))
-cosSim
-a <- (
+sort(data_list[[104]][[12]][,2])
+sort(data_list[[104]][[12]][,2], decrasing=T)
+sort(data_list[[104]][[12]][,2], decreasing=T)
+sort(data_list[[104]][[11]][,2], decreasing=T)
+sort(data_list[[104]][[10]][,2], decreasing=T)
+sort(data_list[[104]][[1]][,2], decreasing=T)
+sort(data_list[[104]][[1]][,1], decreasing=T)
+chinatrust <- apply(c(1:12), 1, function (x) { return(data_list[[94]][[x]]["中國信託商業銀行",]) })
+lapply(data_list[[104]], function (x) { return(x["中國信託商業銀行",]) })
+sapply(data_list[[104]], function (x) { return(x["中國信託商業銀行",]) })
+t(sapply(data_list[[104]], function (x) { return(x["中國信託商業銀行",]) }))
+spply(data_list, function(x) {return (t(sapply(data_list[[x]], function (y) { return(y["中國信託商業銀行",]) })))} )
+sapply(data_list, function(x) {return (t(sapply(data_list[[x]], function (y) { return(y["中國信託商業銀行",]) })))} )
+sapply(data_list, function(x) {return (t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))} )
+sapply(data_list[[94:104]], function(x) {return (t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))} )
+data_list[[94:104]]
+i <- 94:95
+data_list[[i]]
+i <- c(94:95)
+data_list[[i]]
+data_list[[94]]
+data_list[[95]]
+data_list[[c(94,95)]]
+temp <- data_list
+data_list <- vector("list", 11)
+for (i in 1:11) {#
+	data_list[[i]] <- temp[[(i+93)]]#
+}
+data_list
+data_list[[1]][[1]]
+temp[[94]][[1]]
+saveRDS(data_list, "data_list.rds")
+sapply(data_list[[i]], function(x) {return (t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))} )
+data_list[[1]]
+data_list[[1]][[1]]
+data_list_v2 <- vector("list", 11)#
+# names(data_by_year) <- c(94:104)#
+for (i in 1:12) {#
+	data_list_v2[[i]][[j]] <- data_list[[i]][[j]][,colnames(data_list[[i]][[j]])!= "未到期分期付款餘額"]	#
+}
+data_list_v2 <- vector("list", 11)#
+for (i in 1:11) {#
+	for (j in 1:12) {#
+		data_list_v2[[i]][[j]] <- data_list[[i]][[j]][,colnames(data_list[[i]][[j]])!= "未到期分期付款餘額"]	#
+	}#
+}
+saveRDS(data_list_v2, "data_list_v2.rds")
+sapply(data_list_v2, function(x) {return (t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))} )
+lapply(data_list_v2, function(x) {return (t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))} )
+lapply(data_list_v2, function(x) {return (t(sapply(x, function (y) { return(cbind(month= c(1:12), y["中國信託商業銀行",])) })))} )
+lapply(data_list_v2, function(x) {return (t(sapply(x, function (y) { return(rbind(month= c(1:12), y["中國信託商業銀行",])) })))} )
+lapply(data_list_v2, function(x) {return (sapply(x, function (y) { return (t(y["中國信託商業銀行",])) }))} )
+lapply(data_list_v2, function(x) {return (t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))} )
+lapply(data_list_v2, function(x) {return (sapply(x, function (y) { return(y["中國信託商業銀行",]) }))} )
+lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))) } )
+data_list[[104]][[1]]
+data_list[[11]][[1]]
+data_list[[11]][[2]]
+chinatrust <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))) } )
+cathay <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["國泰世華商業銀行",]) })))) } )
+sun <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["玉山商業銀行",]) })))) } )
+rownames(data_list[[1]][[1]])
+which (rownames(data_list[[1]][[1]]) == "玉山商業銀行")
+for (i in 1:11) { for (j in 1:12) { which (rownames(data_list[[i]][[j]]) == "玉山商業銀行") }}
+for (i in 1:11) { for (j in 1:12) { which(rownames(data_list[[i]][[j]]) == "玉山商業銀行") }}
+which (rownames(data_list[[1]][[2]]) == "玉山商業銀行")
+which (rownames(data_list[[1]][[3]]) == "玉山商業銀行")
+which (rownames(data_list[[1]][[4]]) == "玉山商業銀行")
+which (rownames(data_list[[1]][[5]]) == "玉山商業銀行")
+which (rownames(data_list[[1]][[6]]) == "玉山商業銀行")
+for (i in 1:11) { for (j in 1:12) { cat(which(rownames(data_list[[i]][[j]]) == "玉山商業銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i,j,which(rownames(data_list[[i]][[j]]) == "玉山商業銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "玉山商業銀行"),"\n") }}
+taishin <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["台新國際商業銀行",]) })))) } )
+citibank <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["花旗(台灣)商業銀行",]) })))) } )
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "花旗(台灣)商業銀行"),"\n") }}
+data_list[[(100-93)]][[9]]
+rownames(data_list[[(100-93)]][[9]])
+rownames(data_list[[(100-93)]][[10]])
+rownames(data_list[[(100-93)]][[9]]) <- rownames(data_list[[(100-93)]][[10]])
+rownames(data_list_v2[[(100-93)]][[9]]) <- rownames(data_list_v2[[(100-93)]][[10]])
+saveRDS(data_list, "data_list.rds")
+saveRDS(data_list_v2, "data_list_v2.rds")
+chinatrust <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))) } )#
+cathay <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["國泰世華商業銀行",]) })))) } )#
+sun <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["玉山商業銀行",]) })))) } )#
+taishin <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["台新國際商業銀行",]) })))) } )#
+citibank <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["花旗(台灣)商業銀行",]) })))) } )#
+fubon <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["台北富邦商業銀行",]) })))) } )
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "花旗(台灣)商業銀行"),"\n") }}
+citibank
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北富邦商業銀行"),"\n") }}
+rownames(data_list[[1]][[1]])
+rownames(data_list[[3]][[1]])
+rownames(data_list[[5]][[1]])
+data_list_v2_101 <- apply(c(8:11), 1, function(x) {return (data_list_v2[[x]])})
+data_list_v2_101 <- apply(as.matrix(c(8:11)), 1, function(x) {return (data_list_v2[[x]])})
+data_list_v2_101
+citibank <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["花旗(台灣)商業銀行",]) })))) } )#
+fubon <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["台北富邦商業銀行",]) })))) } )
+data_list_v2_101 <- apply(as.matrix(c(9:11)), 1, function(x) {return (data_list_v2[[x]])})
+length(data_list_v2_101)
+data_list_v2_101
+citibank <- lapply(data_list_v2_101, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["花旗(台灣)商業銀行",]) })))) } )#
+# 台北富邦vs 台北富邦商業#
+fubon <- lapply(data_list_v2_101, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["台北富邦商業銀行",]) })))) } )
+chinatrust
+do.call(cbind, chinatrust)
+do.call(rbind, chinatrust)
+sapply(chinatrust, function(x, i) {return (cbind(year=rep(i, 12), x))})
+sapply(chinatrust, function(i) {return (cbind(year=rep(i, 12), chinatrust[[i]]))})
+cbind(year=rep(94, 12), chinatrust[[1]])
+sapply(seq_long(chinatrust), function(i) {return (cbind(year=rep(i, 12), chinatrust[[i]]))})
+sapply(seq_along(chinatrust), function(i) {return (cbind(year=rep(i, 12), chinatrust[[i]]))})
+lapply(seq_along(chinatrust), function(i) {return (cbind(year=rep(i, 12), chinatrust[[i]]))})
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北富邦銀行"),"\n") }}
+data_list[[1]][[2]]
+chinatrust
+chinatrust <- lapply(seq_along(chinatrust), function(i) {return (cbind(year=rep(i, 12), chinatrust[[i]]))})
+chinatrust
+chinatrust <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))) } )
+chinatrust <- lapply(seq_along(chinatrust), function(i) {return (cbind(year=rep((i+93), 12), chinatrust[[i]]))})#
+chinatrust
+do.call(rbind, chinatrust)
+rownames(data_list[[1]][[4]])
+rownames(data_list[[3]][[4]])
+rownames(data_list[[4]][[4]])
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北富邦銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "花旗(台灣)商業銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "美商花旗銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "花旗(台灣)銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北富邦商業銀行"),"\n") }}
+get_bank <- function(bank_name) {#
+	temp <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+93), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	return (temp)#
+}
+ttt <- get_bank("中國信託商業銀行")
+head(ttt)
+chinatrust <- do.call(rbind, chinatrust)
+identical(ttt, chinatrust)
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北國際商業銀行"),"\n") }}
+rownames(data_list[[5]][[1]])
+rownames(data_list[[2]][[7]])
+rownames(data_list[[2]][[8]])
+rownames(data_list[[2]][[9]])
+rownames(data_list[[1]][[2]])
+data_list[[1]][[2]]
+sort(data_list[[1]][[2]][,1],decreasing=T)
+sort(data_list[[1]][[3]][,1],decreasing=T)
+sort(data_list[[2]][[3]][,1],decreasing=T)
+sort(data_list[[3]][[3]][,1],decreasing=T)
+sort(data_list[[4]][[3]][,1],decreasing=T)
+sort(data_list[[5]][[5]][,1],decreasing=T)
+sort(data_list[[6]][[5]][,1],decreasing=T)
+sort(data_list[[6]][[6]][,1],decreasing=T)
+sort(data_list[[6]][[4]][,1],decreasing=T)
+sort(data_list[[6]][[3]][,1],decreasing=T)
+sort(data_list[[6]][[32][,1],decreasing=T)
+sort(data_list[[6]][[2]][,1],decreasing=T)
+sort(data_list[[6]][[1]][,1],decreasing=T)
+sort(data_list[[5]][[12]][,1],decreasing=T)
+sort(data_list[[5]][[11]][,1],decreasing=T)
+sort(data_list[[6]][[11]][,1],decreasing=T)
+sort(data_list[[7]][[11]][,1],decreasing=T)
+sort(data_list[[7]][[11]][,2],decreasing=T)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+identical(ttt, chinatrust)
+test <- get_bank("聯邦商業銀行")
+test[,1]
+test[,3]
+plot(test[,3], type="l")
+plot(chinatrust[,3], type="l")
+chinatrust[,3]
+plot(chinatrust[,3], type="l")
+plot(1:150, 1:8000000, type="l")
+plot(1:150, 1:8000000)
+plot(chinatrust[,3], type="l", ylim=(1,8000000))
+plot(chinatrust[,3], type="l", ylim=c(1,8000000))
+test <- cbind(idx=c(1:nrow(test), test)
 )
-c <- c(1:7)
-c
-paste(c, spe=" ")
-licence()
-sessionInfo()
-Sys.getlocale()
-mu <- c(1, 3)
-sigma <- matrix(c(2, -8*2^(1/2), -8*2^(1/2), 1))
-sigma
-sigma <- matrix(c(2, -8*2^(1/2), -8*2^(1/2), 1), nrow = 2)
-sigma
-install.packages("mixtools")
-library("mixtools")
-ellipse(mu, sigma, alpha = .05, npoints = 250, newplot = FALSE,#
-        draw = TRUE, ...)
-ellipse(mu, sigma))
-ellipse(mu, sigma)
-ellipse(mu, sigma, 0.5)
-mu
-as.vector(mu)
-library(MASS)
-bivn <- mvrnorm(1000, mu = c(1, 3), Sigma = matrix(c(2, -8*2^(1/2), -8*2^(1/2), 1), 2))
-sigma <- matrix(c(2, -.8*2^(1/2), -.8*2^(1/2), 1), nrow = 2)
-ellipse(mu, sigma, 0.5)
-ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = FALSE,#
-        draw = TRUE, plot)
-ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE,#
-        draw = TRUE, plot)
-mu
-sigma
-ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE,#
-        draw = TRUE, lines)
-ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE,#
-        draw = TRUE, plot)
-ellipse(mu, sigma, alpha = .5, npoints = 250, newplot = TRUE)
-x <- c(1:5); y <- x
-plot(x, y, main="type=o")
-lines(x, y, type="o")
-lines(x, y, type=o)
-lines(x, y, type="o")
-par(pch=22, col="red") # plotting symbol and color #
-par(mfrow=c(2,4)) # all plots on one page #
-opts = c("p","l","o","b","c","s","S","h") #
-for(i in 1:length(opts)){ #
-  heading = paste("type=",opts[i]) #
-  plot(x, y, type="n", main=heading) #
-  lines(x, y, type=opts[i]) #
+test
+test <- get_bank("聯邦商業銀行")
+test <- cbind(idx=c(1:nrow(test)), test)
+head(test)
+plot(test[,1], test[,3],type="l")
+plot(test[,1], test[,4],type="l")
+test[,1:6]
+wrtie.table(test, "ubot.csv",rownames=T)
+write.table(test, "ubot.csv",rownames=T)
+write.table(test, "ubot.csv",row.names=T)
+write.table(test, "ubot.csv",col.names=T)
+write.csv(test, "ubot.csv",col.names=T, row.names=F)
+plot(test[,1], test[,4],type="l", ylim=c(1,3000000))
+plot(test[,1], test[,4],type="l", ylim=c(1,3500000))
+tail(data_list, 3)
+head(test)
+head(test[-1:3,])
+head(test[-1,])
+head(test[,-1])
+head(test[,-1,2,3])
+head(test[,-c(1,2,3)])
+as.Date("1994-11")
+as.yearmon("1994-11")
+library(zoo)
+install.packages("zoo")
+library("zoo")
+as.Date("1994-11", "%y%m")
+as.Date("1994-11", format="%y%m")
+as.Date("1994-11", format="%y-%m")
+as.Date("1994-11", format="%y-%b")
+as.Date("1994-11-7", format="%y-%b")
+as.Date("1994-11-7", format="%y-%m")
+as.Date("1994-11-7", format="%y-%m-%d")
+as.Date("1994-11-7", format="%Y-%m-%d")
+as.Date("1994-11", format="%Y-%m")
+as.Date(paste(1, "1994-11") , format="%d-%Y-%m")
+as.Date(paste(1, "1994-11") , format="%d %Y-%m")
+ttt <- head(test)
+as.Date(paste(1, (test[,2]+93+1911), test[,3]), format="%d %Y %m")
+ttt
+as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m")
+test[,1] <- as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m")
+head(test)
+write.csv(test, "ubot.csv",col.names=T, row.names=F)
+head
+head(test)
+test[,1] <- as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m")
+head(test)
+class(test$idx)
+class(test[,1])
+typeof(test[,1])
+as.Date(test[,1])
+test[,1] <- as.Date(test[,1])
+test
+head(as.data.frame(test))
+test <- as.data.frame(test)
+test[,1] <- as.Date(test[,1])
+head(test)
+head(test[,-c(2,3)])
+test <- test[,-c(2,3)]
+head(test)
+write.csv(test, "ubot.csv",col.names=T, row.names=F)
+write.csv(test[,1:2], "ubot_2.csv",col.names=T, row.names=F)
+plot(test[,1],test[,2], type="l")
+plot(test[,1],test[,2], type="l")
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	temp <- as.data.frame(temp)#
+	temp <- cbind(as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m"), temp)#
+	temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
 }
-x <- c(1:5); y <- x # create some data#
-par(pch=22, col="blue") # plotting symbol and color #
-par(mfrow=c(2,4)) # all plots on one page #
-opts = c("p","l","o","b","c","s","S","h") #
-for(i in 1:length(opts){ #
-  heading = paste("type=",opts[i]) #
-  plot(x, y, main=heading) #
-  lines(x, y, type=opts[i]) #
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	temp <- as.data.frame(temp)#
+	# temp <- cbind(as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
 }
-x <- c(1:5); y <- x # create some data#
-par(pch=22, col="blue") # plotting symbol and color #
-par(mfrow=c(2,4)) # all plots on one page #
-opts = c("p","l","o","b","c","s","S","h") #
-for(i in 1:length(opts)){ #
-  heading = paste("type=",opts[i]) #
-  plot(x, y, main=heading) #
-  lines(x, y, type=opts[i]) #
-}
-x <- c(1:5); y <- x # create some data#
-par(pch=22, col="blue") # plotting symbol and color #
-par(mfrow=c(2,4)) # all plots on one page #
-opts = c("p","l","o","b","c","s","S","h") #
-for(i in 1:length(opts)){ #
-  heading = paste("type=",opts[i]) #
-  plot(x, y, main=heading) #
-}
-x <- c(1:5); y <- x # create some data#
-par(pch=22, col="blue") # plotting symbol and color #
-par(mfrow=c(2,4)) # all plots on one page #
-opts = c("p","l","o","b","c","s","S","h") #
-for(i in 1:length(opts)){ #
-  heading = paste("type=",opts[i]) #
-  lines(x, y, type=opts[i]) #
-}
-plot(-4:4, -4:4, type = "n")  # setting up coord. system#
-points(rnorm(200), rnorm(200), col = "red")#
-points(rnorm(100)/2, rnorm(100)/2, col = "blue", cex = 1.5)
-point(x,y, col="yellow")
-points(x,y, col="yellow")
-points(x,y, col="red")
-plot(-4:4, -4:4, type = "n")  # setting up coord. system
-points(x,y, col="red")
-points((x-3),(y-2), col="blue")
-setwd("/Users/weichun/Desktop/creditcard/")
-data <- read.table("st.txt", header=T)
-head(data)
-plot(data$Hold)
-plot(data$Hold, type=I)
-plot(data$Hold, type="I")
-plot(data$Hold, type="l")
-plot(data$B, type="l",col="red")
-plot(data$Hold, type="l")
-plot(data$B, type="l",col="red")
-plot(data$S, type="l",col="green")
-plot(data$Hold, type="l")
-lines(data$B, type="l",col="red")
-lines(data$S, type="l",col="green")
-plot(data$B, type="l",col="red")
-lines(data$S, type="l",col="green")
-lines(data$Hold, type="l", col="blue")
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	temp <- as.data.frame(temp)#
+	temp <- cbind( date = as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	temp <- as.data.frame(temp)#
+	temp <- cbind( date = as.Date(paste(1, (as.numeric(test[,2])+1911), test[,3]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+#
+	temp <- cbind( date = as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m"), temp)#
+	temp <- as.data.frame(temp)#
+	# temp <- cbind( date = as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+	temp <- as.data.frame(temp)#
+	temp <- cbind( date = as.Date(paste(1, (temp[,2]+1911), temp[,3]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+	temp <- as.data.frame(temp)#
+	temp <- cbind( date = as.Date(paste(1, (as.numeric(temp[,2])+1911), temp[,3]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+	temp <- as.data.frame(temp)#
+	temp <- cbind( date = as.Date(paste(1, (as.numeric(temp[,1])+1911), temp[,2]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+get_bank <- function(bank_name, data_list = data_list_v2, start_year = 94) {#
+	start_year <- start_year-1#
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )#
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})#
+	temp <- do.call(rbind, temp)#
+	temp <- as.data.frame(temp)#
+	temp <- cbind( date = as.Date(paste(1, (temp[,1]+1911), temp[,2]), format="%d %Y %m"), temp)#
+	# temp <- temp[,-c(2,3)]#
+#
+	return (temp)#
+}#
+chinatrust <- get_bank("中國信託商業銀行")
+head(chinatrust)
+plot(chinatrust[,4])
+plot(chinatrust[,4],type="l")
+plot(chinatrust[,4],type="l",ylim=c(1,8000000))
+cathay <- get_bank("國泰世華商業銀行")
+line(cathay[,4],type="l", color=red)
+line(cathay[,4],type="l", col=red)
+line(cathay[,4],type="l", col="red")
+lines(cathay[,4],type="l", col="red")
