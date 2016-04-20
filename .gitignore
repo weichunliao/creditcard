@@ -4,3 +4,5 @@
 *.txt
 *.csv
 *.rdata
+*.Rapp.history
+
