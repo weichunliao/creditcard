@@ -86,7 +86,8 @@ for (i in 1:11) {
 
 
 # ######################################
-for (i in 1:11) { for (j in 1:12) { cat(i+93,j,which(rownames(data_list[[i]][[j]]) == "台北富邦銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j, which(rownames(data_list[[i]][[j]]) == "台北富邦銀行"),"\n") }}
+for (i in 1:11) { for (j in 1:12) { cat(i+93,j, ("花旗(台灣)商業銀行" %in% rownames(data_list[[i]][[j]])),"\n") }}
 identical(ttt, chinatrust)
 as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m")
 # ### 
@@ -101,8 +102,6 @@ as.Date(paste(1, (test[,2]+1911), test[,3]), format="%d %Y %m")
 # 台北富邦商業銀行 fubon
 
 top_bank <- c("中國信託商業銀行", "國泰世華商業銀行", "玉山商業銀行", "台新國際商業銀行", "花旗(台灣)商業銀行", "台北富邦商業銀行")
-
-data_list_v2_101 <- apply(as.matrix(c(9:11)), 1, function(x) {return (data_list_v2[[x]])})
 
 chinatrust <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["中國信託商業銀行",]) })))) } )
 cathay <- lapply(data_list_v2, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y["國泰世華商業銀行",]) })))) } )
@@ -134,11 +133,91 @@ get_bank <- function(bank_name, year_count = 11, data_list = data_list_v2) {
 
 	return (temp)
 }
-chinatrust <- get_bank("中國信託商業銀行")
-cathay <- get_bank("國泰世華商業銀行")
-sun <- get_bank("玉山商業銀行")
-taishin <- get_bank("台新國際商業銀行")
-citibank <- get_bank("花旗(台灣)商業銀行")
+
+get_bank <- function(bank_name, year_count = 11, data_list = data_list_v2) {
+	data_list_v2 <- tail(data_list_v2, year_count)
+	start_year <- 104 - year_count
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return(y[bank_name,]) })))) } )
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})
+	temp <- do.call(rbind, temp)
+
+
+	temp <- as.data.frame(temp)
+	temp <- cbind( date = as.Date(paste(1, (temp[,1]+1911), temp[,2]), format="%d %Y %m"), temp)
+	# temp <- temp[,-c(2,3)]
+
+	return (temp)
+}
+
+get_bank_v2 <- function(bank_name, year_count = 11, data_list = data_list_v2) {
+	data_list_v2 <- tail(data_list_v2, year_count)
+	start_year <- 104 - year_count
+	temp <- lapply(data_list, function(x) {return ( cbind(month=c(1:12), t(sapply(x, function (y) { return((y[bank_name,]/tail(y,1))) })))) } )
+	temp <- lapply(seq_along(temp), function(i) {return (cbind(year=rep((i+start_year), 12), temp[[i]]))})
+	temp <- do.call(rbind, temp)
+
+
+	temp <- as.data.frame(temp)
+	temp <- cbind( date = as.Date(paste(1, (temp[,1]+1911), temp[,2]), format="%d %Y %m"), temp)
+	# temp <- temp[,-c(2,3)]
+
+	return (temp)
+}
+
+
+chinatrust <- get_bank("中國信託商業銀行", year_count = 6)
+cathay <- get_bank("國泰世華商業銀行", year_count = 6)
+sun <- get_bank("玉山商業銀行", year_count = 6)
+taishin <- get_bank("台新國際商業銀行", year_count = 6)
+citibank <- get_bank("花旗(台灣)商業銀行", year_count = 6)
+
+plot(chinatrust[,1], chinatrust[,11], col="black", type="l", ylim=c(0,1.5))
+lines(cathay[,1],cathay[,11], col="blue", type="l")
+lines(sun[,1],sun[,11], col="green", type="l")
+lines(taishin[,1],taishin[,11], col="purple", type="l")
+lines(citibank[,1],citibank[,11], col="orange", type="l")
+color <- c("black", "blue", "green", "purple", "orange")
+
+# 
+
+chinatrust2 <- get_bank_v2("中國信託商業銀行", year_count = 6)
+cathay2 <- get_bank_v2("國泰世華商業銀行", year_count = 6)
+sun2 <- get_bank_v2("玉山商業銀行", year_count = 6)
+taishin2 <- get_bank_v2("台新國際商業銀行", year_count = 6)
+citibank2 <- get_bank_v2("花旗(台灣)商業銀行", year_count = 6)
+
+plot(chinatrust2[,1], (chinatrust[,9]/chinatrust[,5])*1000, col="black", ylim=c(4800,11000), type="b", pch=16)
+points(cathay2[,1], (cathay[,9]/cathay[,5])*1000, col="blue", type="b", pch=16)
+points(sun2[,1], (sun[,9]/sun[,5])*1000, col="green", type="b", pch=16)
+points(taishin2[,1], (taishin[,9]/taishin[,5])*1000, col="purple", type="b", pch=16)
+points(citibank2[,1], (citibank[,9]/citibank[,5])*1000, col="orange", type="b", pch=16)
+
+plot(chinatrust2[,1], (chinatrust[,"當月停卡數"]/(chinatrust[,"流通卡數"]-chinatrust[,"當月發卡數"]+chinatrust[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.17
+	))
+points(cathay2[,1], (cathay[,"當月停卡數"]/(cathay[,"流通卡數"]-cathay[,"當月發卡數"]+cathay[,"當月停卡數"])), col="blue", type="l")
+points(sun2[,1], (sun[,"當月停卡數"]/(sun[,"流通卡數"]-sun[,"當月發卡數"]+sun[,"當月停卡數"])), col="green", type="l")
+points(taishin2[,1], (taishin[,"當月停卡數"]/(taishin[,"流通卡數"]-taishin[,"當月發卡數"]+taishin[,"當月停卡數"])), col="purple", type="l")
+points(citibank2[,1], (citibank[,"當月停卡數"]/(citibank[,"流通卡數"]-citibank[,"當月發卡數"]+citibank[,"當月停卡數"])), col="orange", type="l")
+
+plot(chinatrust2[,1], (sun[,"當月發卡數"]/(sun[,"流通卡數"]-sun[,"當月發卡數"]+sun[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.1
+	), main = "sun")
+points(sun[,1], (sun[,"當月停卡數"]/(sun[,"流通卡數"]-sun[,"當月發卡數"]+sun[,"當月停卡數"])), col="green", type="l")
+
+plot(chinatrust2[,1], (chinatrust[,"當月發卡數"]/(chinatrust[,"流通卡數"]-chinatrust[,"當月發卡數"]+chinatrust[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.17
+	), main="chinatrust")
+points(sun[,1], (chinatrust[,"當月停卡數"]/(chinatrust[,"流通卡數"]-chinatrust[,"當月發卡數"]+chinatrust[,"當月停卡數"])), col="green", type="l")
+
+plot(chinatrust2[,1], (taishin[,"當月發卡數"]/(taishin[,"流通卡數"]-taishin[,"當月發卡數"]+taishin[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.1
+	), main="taishin")
+points(sun2[,1], (taishin[,"當月停卡數"]/(taishin[,"流通卡數"]-taishin[,"當月發卡數"]+taishin[,"當月停卡數"])), col="green", type="l")
+
+plot(chinatrust2[,1], (citibank[,"當月發卡數"]/(citibank[,"流通卡數"]-citibank[,"當月發卡數"]+citibank[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.1
+	), main="citibank")
+points(sun2[,1], (citibank[,"當月停卡數"]/(citibank[,"流通卡數"]-citibank[,"當月發卡數"]+citibank[,"當月停卡數"])), col="green", type="l")
+
+plot(chinatrust2[,1], (cathay[,"當月發卡數"]/(cathay[,"流通卡數"]-cathay[,"當月發卡數"]+cathay[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.1
+	), main="cathay")
+points(sun2[,1], (cathay[,"當月停卡數"]/(cathay[,"流通卡數"]-cathay[,"當月發卡數"]+cathay[,"當月停卡數"])), col="green", type="l")
 
 
 
