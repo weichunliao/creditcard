@@ -177,7 +177,9 @@ lines(sun[,1],sun[,11], col="green", type="l")
 lines(taishin[,1],taishin[,11], col="purple", type="l")
 lines(citibank[,1],citibank[,11], col="orange", type="l")
 color <- c("black", "blue", "green", "purple", "orange")
-
+bank <- c("chinatrust", "cathay", "sun", "taishin", "citibank")
+legend("topright", legend=bank, col=color, lty=1, pch=16)
+title("test")
 # 
 
 chinatrust2 <- get_bank_v2("中國信託商業銀行", year_count = 6)
@@ -198,6 +200,8 @@ points(cathay2[,1], (cathay[,"當月停卡數"]/(cathay[,"流通卡數"]-cathay[
 points(sun2[,1], (sun[,"當月停卡數"]/(sun[,"流通卡數"]-sun[,"當月發卡數"]+sun[,"當月停卡數"])), col="green", type="l")
 points(taishin2[,1], (taishin[,"當月停卡數"]/(taishin[,"流通卡數"]-taishin[,"當月發卡數"]+taishin[,"當月停卡數"])), col="purple", type="l")
 points(citibank2[,1], (citibank[,"當月停卡數"]/(citibank[,"流通卡數"]-citibank[,"當月發卡數"]+citibank[,"當月停卡數"])), col="orange", type="l")
+
+
 
 plot(chinatrust2[,1], (sun[,"當月發卡數"]/(sun[,"流通卡數"]-sun[,"當月發卡數"]+sun[,"當月停卡數"])), type="l", col="black", ylim=c(0, 0.1
 	), main = "sun")
@@ -222,5 +226,29 @@ points(sun2[,1], (cathay[,"當月停卡數"]/(cathay[,"流通卡數"]-cathay[,"�
 
 
 # ######################################
+
+data1 <- read.table("news_matrix.txt", sep="\t", header=T, fileEncoding="UTF-16")
+data2 <- read.table("non_news_matrix.txt", sep="\t", header=T, fileEncoding="UTF-16")
+
+test1 <- data1[,4:29]
+test1 <- test1[,-c(9,10,18,19)]
+test2 <- data2[,4:29]
+test2 <- test2[,-c(9,10,18,19)]
+
+ind1 <- which(rowSums(test1) == 0, arr.ind=T)
+ind2 <- which(rowSums(test2) == 0, arr.ind=T)
+
+new_data1 <- data1[ind1,]
+new_data2 <- data2[ind1,]
+
+
+
+
+
+
+
+
+
+
 
 

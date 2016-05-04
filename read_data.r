@@ -131,5 +131,34 @@ for (i in 103:104) {
 # sum(data_list[[96]][[6]][1:43, 6])
 # data_list[[96]][[6]][44, 6]
 
+# ################################################
+non_news_content = read.table("non_news_content2.txt",comment.char="", sep="\t", header=T)
+
+data <- non_news_content
+
+# data$content <- gsub("\n", "", data$content)
+# data$content <- gsub("\t", "", data$content)
+data$content <- gsub("[[:space:]]", "", data$content)
+# data$content <- gsub("https://", "", data$content)
+data$content <- gsub(",", "，", data$content)
+
+data$title <- gsub("\n", "", data$title)
+data$title <- gsub(",", "，", data$title)
+
+# write.table(data, file="non_news_content.csv", col.names=T, row.names=F, sep=",", fileEncoding = "UTF-8")
+write.csv(data, file="non_news_content.csv", row.names=F, fileEncoding = "UTF-8")
+test = read.csv("non_news_content.csv")
+
+
+# ##################
+
+# 1. 給公司的建議？
+# 2. 市佔率(流通卡數*成人平均持卡數/總流通卡數)?
+ 
+
+
+
+
+
 
 

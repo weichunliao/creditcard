@@ -135,11 +135,210 @@ help(log)
 -(3/5*log2(3/5)+2/5*log2(2/5))
 -(3/5*(1*log2(1))+2/5*(1/4*log2(1/4)+3/4*log2(3/4)))
 -(2/5*(1*log2(1))+3/5*(1/4*log2(1/4)+3/4*log2(3/4)))
+library("tree")#
+#
+load("/Users/weichun/Downloads/hw2upload 2/OJ_hw2.rdata")#
+ls()#
+#
+tree.OJ = tree(Purchase~., OJ.train)#
+summary(tree.OJ)#
+plot(tree.OJ)#
+text(tree.OJ, pretty = 0)
+tree.OJ
+tree.pred = predict(tree.OJ,OJ.test, type = "class")#
+table(tree.pred,High.test)
+Purchase.test = OJ.test$Purchase#
+tree.pred = predict(tree.OJ,OJ.test, type = "class")#
+table(tree.pred, Purchase.test)
+class.pred <- table(tree.pred, Purchase.test)#
+1-sum(diag(class.pred))/sum(class.pred)
+class.pred
+diag(class.pred)
+class.pred <- table(tree.pred, Purchase.test)#
+1-sum(diag(class.pred))/sum(class.pred)
+class.pred <- table(tree.pred, Purchase.test)
+class.pred
+1-sum(diag(class.pred))/sum(class.pred)
+load("/Users/weichun/NTU Space/b01705021@ntu.edu.tw/MySyncFolder/NTU/senior spring/Big Data and Business Analytics/carseats.rdata")
+set.seed(2)#
+#remove Sales#
+Carseats$Sales = NULL#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.train=Carseats[train,]#
+Carseats.test=Carseats[-train,]#
+#
+tree.carseats=tree(High~.,Carseats.train)#
+tree.pred=predict(tree.carseats,Carseats.test,type="class")#
+table(tree.pred,High.test)
+library(tree)#
+#another similar package is rpart, C50#
+#
+#construct the outcome variable#
+#label high sales if Sales > 8#
+#
+Carseats$High=ifelse(Carseats$Sales<=8,"No","Yes")#
+#convert character to factor#
+Carseats$High = factor(Carseats$High)#
+#train-test evaluation#
+set.seed(2)#
+#remove Sales#
+Carseats$Sales = NULL#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.train=Carseats[train,]#
+Carseats.test=Carseats[-train,]#
+#
+tree.carseats=tree(High~.,Carseats.train)#
+tree.pred=predict(tree.carseats,Carseats.test,type="class")#
+table(tree.pred,High.test)
+Carseats$High=ifelse(Carseats$Sales<=8,"No","Yes")#
+#convert character to factor#
+Carseats$High = factor(Carseats$High)#
+#train-test evaluation#
+set.seed(2)#
+#remove Sales#
+Carseats$Sales = NULL#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.train=Carseats[train,]#
+Carseats.test=Carseats[-train,]#
+#
+tree.carseats=tree(High~.,Carseats.train)#
+tree.pred=predict(tree.carseats,Carseats.test,type="class")#
+table(tree.pred,High.test)
+Carseats$High=ifelse(Carseats$Sales<=8,"No","Yes")#
+#convert character to factor#
+Carseats$High = factor(Carseats$High)
+head(Carseats)
+Carseats$High=ifelse(Carseats$Sales<=8,"No","Yes")
+head(Carseats)
+ls()
+summary(Carseats$Sales)
+load("/Users/weichun/NTU Space/b01705021@ntu.edu.tw/MySyncFolder/NTU/senior spring/Big Data and Business Analytics/carseats.rdata")
+Carseats$High=ifelse(Carseats$Sales<=8,"No","Yes")#
+#convert character to factor#
+Carseats$High = factor(Carseats$High)#
+#train-test evaluation#
+set.seed(2)#
+#remove Sales#
+Carseats$Sales = NULL#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.train=Carseats[train,]#
+Carseats.test=Carseats[-train,]#
+#
+tree.carseats=tree(High~.,Carseats.train)#
+tree.pred=predict(tree.carseats,Carseats.test,type="class")#
+table(tree.pred,High.test)
+table(tree.pred,Carseats.test$High)
+plot(set.seed(2)#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.test=Carseats[-train,]#
+High.test=Carseats$High[-train]#
+tree.carseats=tree(High~.-Sales,Carseats,subset=train)#
+tree.pred=predict(tree.carseats,Carseats.test,type="class")#
+table(tree.pred,High.test)#
+#accuracy = 0.715#
+(86+57)/200#
+#
+)
+set.seed(2)#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.test=Carseats[-train,]#
+High.test=Carseats$High[-train]#
+tree.carseats=tree(High~.-Sales,Carseats,subset=train)#
+tree.pred=predict(tree.carseats,Carseats.test,type="class")#
+table(tree.pred,High.test)#
+#accuracy = 0.715
+summary(tree.carseats)#
+plot(tree.carseats)#
+text(tree.carseats,pretty=0)#
+tree.carseats
+set.seed(2)#
+#remove Sales#
+Carseats$Sales = NULL#
+train=sample(1:nrow(Carseats), 200)#
+Carseats.train=Carseats[train,]#
+Carseats.test=Carseats[-train,]#
+#
+tree.carseats=tree(High~.,Carseats.train)
+plot(tree.carseats)
+tree.carseat
+tree.carseats
+plot(tree.carseats)
+tree.pred=predict(tree.carseats,Carseats.test,type="class")
+tree.pred
+plot(tree.carseats)
+text(tree.carseats,pretty=1)
+text(tree.carseats,pretty=0)
+text(tree.carseats,pretty=0¥8)
+text(tree.carseats,pretty=9)
+library("maptree")
+install.packages("maptree")
+library("maptree")
+draw.tree(tree.carseats)
+draw.tree(tree.OJ)
+clean()
+help()
+ls()
+library(MASS)
+ls()
+fix(Boston)
+ls()
+help(Boston)
+names(Boston)
+lm.fit=lm(medv~lstat,data=Boston)
+summary(lm.fit)
+names(lm.fit)#
+coef(lm.fit)#
+confint(lm.fit)
+predict(lm.fit,data.frame(lstat=(c(5,10,15))), interval="confidence")#
+#parameter uncertainty + uncertainty caused by "noise"#
+predict(lm.fit,data.frame(lstat=(c(5,10,15))), interval="prediction")#
+#
+#plot the regression result#
+plot(Boston$lstat, Boston$medv)
+plot(lm.fit)
 setwd("/Users/weichun/Desktop/creditcard")
+data_list <- readRDS("data_list.rds")#
 data_list_v2 <- readRDS("data_list_v2.rds")
-for (i in 1:11) { for (j in 1:12) { cat(i+93,j, ("台北富邦銀行" %in% rownames(data_list[[i]][[j]])),"\n") }}
-data_list <- readRDS("data_list.rds")
-for (i in 1:11) { for (j in 1:12) { cat(i+93,j, ("台北富邦銀行" %in% rownames(data_list[[i]][[j]])),"\n") }}
+rownames(data_list[[1]])
+rownames(data_list[[1]][[1]])
+rownames(data_list[[10]][[1]])
+data1 <- read.table("news_matrix.txt", sep="\t", header=T, fileEncoding="UTF-16")
+data2 <- read.table("non_news_matrix.txt", sep="\t", header=T, fileEncoding="UTF-16")
+colnames(data1)
+colnames(data1)[4]
+colnames(data1)[31]
+colnames(data1)[29]
+head(data1[,4:29-12])
+head(data1[,4:29~-12])
+head(data1[,4:29])
+head(data1[,4:29])[,-c(9,10,18,19)]
+test1 <- data1[,4:29])[,-c(9,10,18,19)#
+test2 <- data2[,4:29])[,-c(9,10,18,19)
+test1 <- data1[,4:29]#
+test1 <- test1[,-c(9,10,18,19)]#
+test2 <- data2[,4:29]#
+test2 <- test2[,-c(9,10,18,19)]
+table(rowSums(test1))
+table(rowSums(test2))
+ind2 <- which(rowSums(test2)==0, arr.ind=T)
+rnrow(ind2)
+nrow(ind2)
+ind2 <- which(rowSums(test2) = 0, arr.ind=T)
+ind2 <- which(rowSums(test2) == 0, arr.ind=T)
+nrow(ind2)
+which(rowSums(test2) == 0, arr.ind=
+T)
+ind2 <- which(rowSums(test2) == 0, arr.ind=T)
+length(ind2)
+rownames(data_list[[10]][[1]])
+banksss <- rownames(data_list[[10]][[1]])
+banksss <- rownames(data_list[[10]][[1]])[-1]
+banksss
+banksss <- rownames(data_list[[10]][[1]])
+banksss <- head(rownames(data_list[[10]][[1]]), -1)
+banksss
+plot(NULL)
+bank_matrix <- lapply(banksss, function(x) get_bank(x))
 get_bank <- function(bank_name, year_count = 11, data_list = data_list_v2) {#
 	data_list_v2 <- tail(data_list_v2, year_count)#
 	start_year <- 104 - year_count#
@@ -151,9 +350,63 @@ get_bank <- function(bank_name, year_count = 11, data_list = data_list_v2) {#
 	# temp <- temp[,-c(2,3)]#
 #
 	return (temp)#
-}#
-chinatrust <- get_bank("中國信託商業銀行")
-citibank <- get_bank("花旗(台灣)商業銀行", year_count=6)
-head(citibank)
-install.packages("tree")
-library(tree)
+}
+bank_matrix <- lapply(banksss, function(x) get_bank(x))
+bank_matrix <- lapply(banksss, function(x) get_bank(x, year_count=6))
+rownames(data_list[[5]][[1]])
+rownames(data_list[[11]][[1]])
+rownames(data_list[[11]][[1]]) %in%rownames(data_list[[5]][[1]])
+rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])
+which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==T, arr.ind=T)
+which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==F, arr.ind=T)
+rownames(data_list[[11]][[1]])[which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==F, arr.ind=T)]
+rownames(data_list[[11]][[1]])[-which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==T, arr.ind=T)]
+rownames(data_list[[11]][[1]])[-c(which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==T, arr.ind=T))]
+rownames(data_list[[11]][[1]])[-3]
+rownames(data_list[[11]][[1]])[-c(which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==F, arr.ind=T))]
+tail(rownames(data_list[[11]][[1]])[-c(which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==F, arr.ind=T))],1)
+banksss<-head(rownames(data_list[[11]][[1]])[-c(which(rownames(data_list[[11]][[1]]) %in%rownames(data_list[[6]][[1]])==F, arr.ind=T))],-1)
+banksss
+bank_matrix <- lapply(banksss, function(x) get_bank(x, year_count=6))
+(which(banksss %in%rownames(data_list[[6]][[1]])==F, arr.ind=T))
+(which(banksss %in%rownames(data_list[[6]][[1]])==T, arr.ind=T))
+bank_matrix <- lapply(head(banksss), function(x) get_bank(x, year_count=6))
+bank_matrix <- lapply(head(banksss,10), function(x) get_bank(x, year_count=6))
+bank_matrix <- lapply(head(banksss,15), function(x) get_bank(x, year_count=6))
+bank_matrix <- lapply(head(banksss,20), function(x) get_bank(x, year_count=6))
+bank_matrix <- lapply(head(banksss,25), function(x) get_bank(x, year_count=6))
+bank_matrix <- lapply(head(banksss,30), function(x) get_bank(x, year_count=6))
+rownames(data_list[[6]][[1]])
+bank_matrix <- lapply(head(banksss,29), function(x) get_bank(x, year_count=6))
+bank_matrix <- lapply(head(banksss,28), function(x) get_bank(x, year_count=6))
+banksss <- banksss[-29]
+banksss
+bank_matrix <- lapply(banksss, function(x) get_bank(x, year_count=6))
+head(bank_matrix[[1]])
+plot.new
+plot.new()
+t <- lapply(seq_along(bank_matrix), funciton(x) lines(bank_matrix[[x]][,1],bank_matrix[[x]][,11], col=color[x], type="l", lwd=2))
+lapply(seq_along(bank_matrix), funciton(x) lines(bank_matrix[[x]][,1],bank_matrix[[x]][,11], col=color[x], type="l", lwd=2))
+plot.new()#
+for (i in 1:29) {#
+	lines(bank_matrix[[i]][,1], bank_matrix[[i]][,11],col=color[i], type="l", ylim=c(0.5,1), lwd=2)#
+}
+color <- terrain.colors(36)
+for (i in 1:29) {#
+	lines(bank_matrix[[i]][,1], bank_matrix[[i]][,11],col=color[i], type="l", ylim=c(0.5,1), lwd=2)#
+}
+plot(NULL, xlim=c(bank_matrix[[i]][,1]), ylim=c(1,5))
+for (i in 1:29) {#
+	lines(bank_matrix[[i]][,1], bank_matrix[[i]][,11],col=color[i], type="l", ylim=c(0.5,1), lwd=2)#
+}
+plot(bank_matrix[[1]][,1], bank_matrix[[1]][,11], ylim=c(1,5))
+plot(bank_matrix[[1]][,1], bank_matrix[[1]][,11], ylim=c(1,5), col=color[1])
+head(bank_matrix[[1]][,11])
+plot(bank_matrix[[1]][,1], bank_matrix[[1]][,11], ylim=c(0,5), col=color[1])#
+for (i in 2:29) {#
+	lines(bank_matrix[[i]][,1], bank_matrix[[i]][,11],col=color[i], type="l", ylim=c(0.5,1), lwd=2)#
+}
+plot(bank_matrix[[1]][,1], bank_matrix[[1]][,11], ylim=c(0,5), col=color[1], type="l")#
+for (i in 2:29) {#
+	lines(bank_matrix[[i]][,1], bank_matrix[[i]][,11],col=color[i], type="l", ylim=c(0.5,1), lwd=1)#
+}
